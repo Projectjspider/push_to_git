@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Signup.html</title>
         <style>
             *{
                 margin: 0px;
@@ -66,7 +66,7 @@
         <input type="password" name="password" placeholder="Password">
        
         <button>Sign Up</button>
-        <h2 style="color: wheat; text-align: center; padding-top: 10px;">${value}</h2>
+        <h2 style="color: wheat; text-align: center; padding-top: 10px;">${value3}</h2>
     </form>
     <form action="main.jsp"><button>Back</button></form>
     

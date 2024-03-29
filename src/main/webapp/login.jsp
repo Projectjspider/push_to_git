@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login.html</title>
     <style>
         *{
             margin: 0px;
@@ -18,7 +18,7 @@
             background-repeat: no-repeat;
         }
         #d1{
-            height:370px;
+            height:390px;
             width: 400px;
             box-shadow: 1px 1px 36px 1px white;
             margin-left: 800px;
@@ -72,11 +72,11 @@
     <div id="d1">
         <form action="validate">
         <h1>Login</h1>
-        <input type="text" name="userName" placeholder="Username / Email / Phone" id="i1">
+        <input type="text" name="userName" placeholder="Username / Email " id="i1">
         <input type="password" name="password" placeholder="Password" id="i2"><br>
         <a href="forgetpswd.jsp">Forgot Password </a>
         <button>Login</button>
-        <h2>${value}</h2>
+        <h2 style="color:red; text-align: center; padding-top: 10px;">${value1}</h2>
         </form>
     </div>
 </body>

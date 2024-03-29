@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RestPswd.html</title>
     <style>
         *{
             margin: 0px;
@@ -55,12 +55,12 @@
     <div>
         <form action="setpass">
             <h1>Reset Password</h1>
-            <input type="text" name="userId" placeholder="Enter your Id">
+            <input type="text" name="phn" placeholder="Enter your Phone number">
             <input type="text" name="password" placeholder="New Password">
             <input type="text" name="cnfp" placeholder="Confirm Password">
             <button>Submit</button>
         </form>
-        <h2 style="color: wheat; text-align: center; padding-top: 10px;">${value}</h2>
+        <h2 style="color: wheat; text-align: center; padding-top: 10px;">${value2}</h2>
     </form>
     <form action="main.jsp"><button>Back</button></form>
        

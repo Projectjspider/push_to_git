@@ -3,7 +3,9 @@ package com.example.alphamale.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,57 +20,53 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	
 	@Autowired
-	UserRepo userRepo;
+	UserServiceImpln  us;
 	
 	@RequestMapping("home")
 	String login() {
 		return "main.jsp";
 	}
 	
-//	@RequestMapping("validate")
-//	String validate(String userName,String email, Long phn, HttpSession h) {
-//		if()
-//	}
+
 	
 	@RequestMapping("signup")
 	public String  signup(User u,HttpSession h) {
-		userRepo.save(u);
+		us.saveUser(u);
 		
-		h.setAttribute("value", "User save successfully");
+		h.setAttribute("value3", "User save successfully");
 		return "add.jsp";
 	}
 	
 
-	UserService us=new UserServiceImpln();
 	
-	@RequestMapping("validate")
-	public String validate (@RequestParam String value,@RequestParam String pswd,HttpSession h) {
-		System.out.println(10);
-		User u =  us.login(value, pswd);
+	@GetMapping("validate")
+	public String validate (@RequestParam String userName,@RequestParam String password,HttpSession h) {
+		
+		User u =  us.login(userName, password);
 		if(u != null) {
-			h.setAttribute("value", u);
+			h.setAttribute("name", u.getUserName());
 			return "final.jsp";
-			
 		}else {
-			h.setAttribute("value", "Invalid Credential");
+			h.setAttribute("value1", "Invalid Credential");
+			return "login.jsp";
 		}
-		return "login.jsp";
+		
+
 	}
 	
 	@RequestMapping("setpass")
-	public String setPassword(int userId,String password,HttpSession h) {
-	Optional<User>	u=userRepo.findById(userId);
+	public String setPassword(Long phn,String password,HttpSession h) {
+	User u =  us.updatePassword(phn, password);
 	
 	
-	if(u.isPresent()  ) {
-		User u1 =  u.get();
-		u1.setPassword(password);
-		h.setAttribute("value", "Password Reset Successfully..");
-		userRepo.save(u1);
+	if(u != null  ) {
+		
+		h.setAttribute("value2", "Password Reset Successfully..");
+		
 		return "forgetpswd.jsp";
 	}
 	else {
-		h.setAttribute("value", "Please Provide valid Id");
+		h.setAttribute("value2", "Please Provide valid Id");
 		return "forgetpswd.jsp";
 	}
 	}
